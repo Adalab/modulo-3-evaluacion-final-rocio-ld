@@ -1,8 +1,8 @@
 
-function SelectHouse() {
+function SelectHouse({changeSelectHouse}) {
 
-    const handleChangeHouse=()=>{
-        
+    const handleChangeHouse=(event)=>{
+        changeSelectHouse(event.target.value);
     }
   return (
     <form>

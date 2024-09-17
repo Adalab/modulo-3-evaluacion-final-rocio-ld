@@ -7,24 +7,41 @@ import SelectHouse from "./SelectHouse";
 
 function App() {
   const [listCharacter, setListCharacter]=useState([]);
-  const [selectHouse, setSelectHouse]=useState("all")
-
+  const [selectHouse, setSelectHouse]=useState("all");
+  const [filteredCharacter, setFilteredCharacter]=useState([]);
+//Este useEffect carga los datos de la API cuando el componente se monta
   useEffect(()=>{
-    getDataApi().then(cleanData =>setListCharacter(cleanData))
-  }, [])
+    getDataApi().then(cleanData =>{
+      setListCharacter(cleanData);
+  setFilteredCharacter(cleanData);
 
-/*const searchFilter=(itemHouse)=>{
-  const filteredCharacter=listCharacter.filter(item=> item.house)
-}*/
+  }); 
+},[]);
+//Este useEffect filtra los personajes cuando cambia la casa seleccionada
+useEffect(()=>{
+  if(selectHouse === "all"){
+    setFilteredCharacter(listCharacter)
+  }else{
+    //Filtramos los personajes por la casa seleccionada
+    const filtered=listCharacter.filter((item)=>item.house===selectHouse);
+    setFilteredCharacter(filtered);
+  }
+},[selectHouse, listCharacter]);
+
+
+  const changeSelectHouse =(valueSelect)=>{
+    setSelectHouse(valueSelect);
+  }
+
 
   
   return (
     <>
     <Header/>
     <main>
-      <SelectHouse/>
+      <SelectHouse changeSelectHouse={changeSelectHouse}/>
       <section>
-        <CharacterList listCharacter= {listCharacter}  />
+        <CharacterList listCharacter= {filteredCharacter}  />
       
       </section>
 
