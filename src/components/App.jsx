@@ -7,8 +7,10 @@ import SelectHouse from "./SelectHouse";
 
 function App() {
   const [listCharacter, setListCharacter]=useState([]);
-  const [selectHouse, setSelectHouse]=useState("all");
+  const [selectHouse, setSelectHouse]=useState("Gryffindor");
   const [filteredCharacter, setFilteredCharacter]=useState([]);
+  const [searchName, setSearchName]=useState("");
+
 //Este useEffect carga los datos de la API cuando el componente se monta
   useEffect(()=>{
     getDataApi().then(cleanData =>{
@@ -19,18 +21,24 @@ function App() {
 },[]);
 //Este useEffect filtra los personajes cuando cambia la casa seleccionada
 useEffect(()=>{
-  if(selectHouse === "all"){
-    setFilteredCharacter(listCharacter)
-  }else{
-    //Filtramos los personajes por la casa seleccionada
-    const filtered=listCharacter.filter((item)=>item.house===selectHouse);
-    setFilteredCharacter(filtered);
+  const filteredByHouse =
+  selectHouse === "all"
+    ? listCharacter
+    : listCharacter.filter((item) => item.house === selectHouse);
+
+  const filterByName= filteredByHouse.filter((item)=>item.name.toLowerCase().includes(searchName.toLowerCase()))
+    setFilteredCharacter(filterByName);
   }
-},[selectHouse, listCharacter]);
+,[selectHouse, searchName, listCharacter]);
 
-
+//funcion para hallar el valor del select para pasárselo al componente de SelectHouse.jsx
   const changeSelectHouse =(valueSelect)=>{
     setSelectHouse(valueSelect);
+  }
+  //funcion para actualizar busqueda nombre
+
+  const changeSearchName=(valueName)=>{
+    setSearchName(valueName);
   }
 
 
@@ -39,7 +47,7 @@ useEffect(()=>{
     <>
     <Header/>
     <main>
-      <SelectHouse changeSelectHouse={changeSelectHouse}/>
+      <SelectHouse changeSelectHouse={changeSelectHouse} changeSearchName={changeSearchName} selectHouse={selectHouse} />
       <section>
         <CharacterList listCharacter= {filteredCharacter}  />
       
