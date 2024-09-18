@@ -47,9 +47,10 @@ useEffect(()=>{
  
   const validationRoute= matchPath("/details/:id", pathname)
 
-  const idCharacter= validationRoute?validationRoute.params.id : null
-
+  const idCharacter= validationRoute ? (validationRoute.params.id ): null;
+  
   const detail= listCharacter.find(item => item.id ===idCharacter)
+  
 
 
   

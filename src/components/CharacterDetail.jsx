@@ -4,6 +4,7 @@ function CharacterDetail({data}) {
   const imageOption=()=>{
     return data.image?data.image:`https://pm1.narvii.com/6474/c642ed91498b15b6205bcebbd48db45f7077104c_hq.jpg`
   }
+
   return (
     <article>
       
@@ -12,7 +13,8 @@ function CharacterDetail({data}) {
         <p>Especie:{data.species}</p>
       <p>Casa:{data.house}</p>
       <p>Género:{data.gender}</p>
-      <p>Estatus:{data.status}</p>
+      <p>Estatus:{data.alive?"Vivo":"Muerto"}</p>
+      <Link to="/">Ir al Inicio</Link>
       
     </article>
 

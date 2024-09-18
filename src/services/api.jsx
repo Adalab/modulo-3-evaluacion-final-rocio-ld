@@ -10,7 +10,7 @@ return fetch(`https://hp-api.onrender.com/api/characters/`)
             species: item.species,
             house: item.house,
             gender: item.gender,
-            status: item.alive
+            alive: item.alive
 
         }
     });
