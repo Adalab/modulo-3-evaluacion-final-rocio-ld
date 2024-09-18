@@ -3,6 +3,9 @@ import getDataApi from "../services/api";
 import { useEffect, useState } from "react";
 import CharacterList from "./CharacterList";
 import SelectHouse from "./SelectHouse";
+import { matchPath, Route, Routes, useLocation } from "react-router-dom";
+import CharacterDetail from "./CharacterDetail";
+
 
 
 function App() {
@@ -40,6 +43,13 @@ useEffect(()=>{
   const changeSearchName=(valueName)=>{
     setSearchName(valueName);
   }
+  const { pathname }= useLocation()
+ 
+  const validationRoute= matchPath("/details/:id", pathname)
+
+  const idCharacter= validationRoute?validationRoute.params.id : null
+
+  const detail= listCharacter.find(item => item.id ===idCharacter)
 
 
   
@@ -47,17 +57,28 @@ useEffect(()=>{
     <>
     <Header/>
     <main>
-      <SelectHouse changeSelectHouse={changeSelectHouse} changeSearchName={changeSearchName} selectHouse={selectHouse} />
-      <section>
-        <CharacterList listCharacter= {filteredCharacter}  />
+    <section>
+      
+      <SelectHouse changeSelectHouse={changeSelectHouse} changeSearchName={changeSearchName} selectHouse={selectHouse} searchName={searchName} />
       
       </section>
+      <section>
+      <Routes>
+        <Route 
+        path="/" 
+        element={<CharacterList listCharacter= {filteredCharacter}  />}
+        />
+        <Route path="/details/:id"element={<CharacterDetail data={detail}/>}/>
+        </Routes>
+      
+        </section>
+      
 
     </main>
         
         </>  
   )
-}
+};
 
 export default App;
 

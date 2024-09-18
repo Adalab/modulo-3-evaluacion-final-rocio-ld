@@ -1,7 +1,7 @@
 
 
 function SelectHouse
-({changeSelectHouse, changeSearchName, selectHouse}) {
+({changeSelectHouse, changeSearchName, selectHouse, searchName}) {
 //estado local para el input de busqueda de personaje
 
     const handleChangeHouse=(event)=>{
@@ -14,7 +14,7 @@ function SelectHouse
   return (
     <form>
         <label htmlFor="name">Buscar por personaje:</label>
-        <input type="text" id="name" onChange={handleChangeName}/>
+        <input type="text" id="name" value={searchName} onChange={handleChangeName}/>
         <label htmlFor="select">Selecciona la casa:</label>
         <select name="select" value={selectHouse} onChange={handleChangeHouse}>
             <option value="all">Todos</option>
