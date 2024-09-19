@@ -8,7 +8,11 @@ function CharacterList({listCharacter}) {
     }
     return (
     <div className="divsection2">
-        {mapCharacter()}
+        {listCharacter.length > 0 ? (
+                mapCharacter()
+            ) : (
+                <p>No hay ningún personaje que coincida con la palabra </p>
+            )}
     </div>
   )
 }
