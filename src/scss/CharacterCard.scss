@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(209, 207, 207);
+}
+.articleCard{
+    width: 150px;
+    height: 350px;
+    display:flex;
+    background-color: rgb(173, 149, 11);
+    text-decoration: none;
+    &__img{
+        width: 150px;
+        height: 220px;
+    }
+    &__h4{
+        color:white;
+        
+        
+    }
+    &__p{
+        color:white;
+        
+    }
+}
+.linkCard{
+    text-decoration: none;
+}

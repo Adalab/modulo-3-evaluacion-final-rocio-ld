@@ -1,0 +1,17 @@
+.form{
+    display:flex;
+    gap: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    &__label{
+        color: white;
+    }
+    &__input{
+        width: 300px;
+
+    }
+    &__select{
+        width: 200px;
+    }
+}

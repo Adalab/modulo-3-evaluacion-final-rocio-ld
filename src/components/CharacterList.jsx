@@ -1,4 +1,5 @@
 import CharacterCard from "./CharacterCard"
+import "../scss/CharacterList.scss"
 
 function CharacterList({listCharacter}) {
   
@@ -6,7 +7,7 @@ function CharacterList({listCharacter}) {
         return(listCharacter.map(item=><CharacterCard key={item.id} item={item}/>))
     }
     return (
-    <div>
+    <div className="divsection2">
         {mapCharacter()}
     </div>
   )

@@ -1,0 +1,22 @@
+.articleDetail{
+    background-color: rgb(99, 4, 4);
+    width: 450px;
+    height: 350px;
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+    &__h4{
+        color:white;
+    }
+    &__p{
+        color:white;
+    }
+    &__img{
+        width: 200px;
+        height: 250px;
+    }
+}
+.linkDetail{
+    text-decoration: none;
+    color: white;
+}

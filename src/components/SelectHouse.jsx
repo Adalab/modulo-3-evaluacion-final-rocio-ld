@@ -1,4 +1,4 @@
-
+import "../scss/SelectHouse.scss"
 
 function SelectHouse
 ({changeSelectHouse, changeSearchName, selectHouse, searchName}) {
@@ -10,13 +10,18 @@ function SelectHouse
   const handleChangeName=(event)=>{
     changeSearchName(event.target.value);
   }
+  const handleKeyEnter=(event)=>{
+    if(event.key === "enter"){
+      event.preventDefault();
+    }
+  }
 
   return (
-    <form>
-        <label htmlFor="name">Buscar por personaje:</label>
-        <input type="text" id="name" value={searchName} onChange={handleChangeName}/>
-        <label htmlFor="select">Selecciona la casa:</label>
-        <select name="select" value={selectHouse} onChange={handleChangeHouse}>
+    <form className="form">
+        <label htmlFor="name" className="form__label">Buscar por personaje:</label>
+        <input type="text" className="form__input"id="name" value={searchName} onChange={handleChangeName} onKeyDown={handleKeyEnter}/>
+        <label  htmlFor="select" className="form__label" >Selecciona la casa:</label>
+        <select name="select" className="form__select" value={selectHouse} onChange={handleChangeHouse}>
             <option value="all">Todos</option>
             <option value="Gryffindor">Gryffindor</option>
             <option value="Slytherin">Slytherin</option>

@@ -5,6 +5,7 @@ import CharacterList from "./CharacterList";
 import SelectHouse from "./SelectHouse";
 import { matchPath, Route, Routes, useLocation } from "react-router-dom";
 import CharacterDetail from "./CharacterDetail";
+import "../scss/App.scss";
 
 
 
@@ -43,9 +44,13 @@ useEffect(()=>{
   const changeSearchName=(valueName)=>{
     setSearchName(valueName);
   }
+
+  //encontrar el objeto que me interesa de la url
   const { pathname }= useLocation()
- 
+
+ //me busca la parte dinamica y valido que la url sea la misma que la id
   const validationRoute= matchPath("/details/:id", pathname)
+  
 
   const idCharacter= validationRoute ? (validationRoute.params.id ): null;
   
@@ -58,7 +63,7 @@ useEffect(()=>{
     <>
     <Header/>
     <main>
-    <section>
+    <section className="section1">
       
       <SelectHouse changeSelectHouse={changeSelectHouse} changeSearchName={changeSearchName} selectHouse={selectHouse} searchName={searchName} />
       
